@@ -16,8 +16,9 @@ The VBO format is a simple byte-by-byte format. The first line in the file are t
 * n: For Normal Floats, the following integer will be 3 if there are vertex normals, otherwise 0.
 * t: For Texture Coord Floats, the following integer will be 2 if there are texture coords, otherwise 0.
 
-The Header ends with an newline character (\n).
+The Header ends with a newline character (\n).
 Then the remaining contents of the file are s*v*4 (strides * vertices * 4) bytes that when read 4 at a time become your float data. All you need to do is put these floats directly in a float buffer, set up the stride, transfer it to the video card, and then call drawArrays.
+The order of data in a stride will be VVVNNNTT where Vs are vertex floats, Ns are Normal floats, and Ts are texture floats. If the object file doesnt contain normals or texture coordinates then the data order is the same but just skipping over what isn't present.
 
 h2. Jar Usage:
 
