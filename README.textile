@@ -1,0 +1,21 @@
+h1. Object-to-VBO
+
+Copyright (c) 2012 Kyle Paulsen. All Rights Reserved.
+Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
+
+h2. What is it?
+
+This is a Wavefront Object converter. It is aimed at converting simple objects into a very efficient format. As such, this is geared more towards making games rather than support all Wavefront object features. So far it only supports the essentials: vertices, vertex normals, 2D texture coords and triangular faces. It will ignore all other features and will probably break if your object has faces with more than 3 vertices. But in the end, the VBO file format will allow you to read the file quickly, byte by byte, to build an interlaced float buffer immediately. 
+
+h2. The format
+
+The VBO format is a simple byte-by-byte format. The first line in the file are the headers. Header data consists of a character to denote what the following 4 byte integer is for. The header ends with a end-line character. The header characters are:
+
+* s: For stride, the following integer denotes how many floats are in one vertex stride.
+* v: For vertices, the following integer denotes how many vertices (and strides) to expect in the file.
+* n: For Normal Floats, the following integer will be 3 if there are vertex normals, otherwise 0.
+* t: For Texture Coord Floats, the following integer will be 2 if there are texture coords, otherwise 0.
+
+h2. Jar Usage:
+
+* java -jar Obj2VBO.jar input.obj output.vbo

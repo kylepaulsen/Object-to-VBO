@@ -1,0 +1,10 @@
+bin/
+build/
+.settings/
+.classpath
+.project
+*.kate-swp
+*.swp
+*.lock
+*.out
+*~
